@@ -1,7 +1,6 @@
 import React from "react";
 import { Unity, useUnityContext, } from "react-unity-webgl";
 import { Box, Button, } from "@mui/material";
-import { IGameWebGLSettings } from "./GameWebGLSettings.tsx";
 import CircularProgressWithLabel from "../CircularProgress/CircularProgressWithLabel.tsx";
 
 export interface IGameWebGL {
