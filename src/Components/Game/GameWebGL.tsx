@@ -34,7 +34,6 @@ export default function GameWebGL(props: IGameWebGL) {
             return;
         }
         
-        requestFullscreen(true);
     }, [isLoaded]);
 
     return (
@@ -61,8 +60,8 @@ export default function GameWebGL(props: IGameWebGL) {
                 tabIndex={1}
                 style={{
                     display: isLoaded ? "block" : "none",
-                    width: "768",
-                    height: "1024"
+                    width: "768px",
+                    height: "1024px"
                 }}
             />
         </Box>
