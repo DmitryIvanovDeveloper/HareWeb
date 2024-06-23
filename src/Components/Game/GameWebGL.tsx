@@ -61,7 +61,9 @@ export default function GameWebGL(props: IGameWebGL) {
                 style={{
                     display: isLoaded ? "block" : "none",
                     width: "768px",
-                    height: "1024px"
+                    maxWidth: "768px",
+                    height: "1024px",
+                    maxHeight: "1024px"
                 }}
             />
         </Box>
