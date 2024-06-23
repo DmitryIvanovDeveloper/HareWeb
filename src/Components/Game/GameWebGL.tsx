@@ -26,8 +26,12 @@ export default function GameWebGL(props: IGameWebGL) {
     });
 
     useEffect(() => {
+        if (!isLoaded) {
+            return;
+        }
+        
         requestFullscreen(true);
-    }, []);
+    }, [isLoaded]);
 
     return (
         <Box
