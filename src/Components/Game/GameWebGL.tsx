@@ -63,9 +63,6 @@ export default function GameWebGL(props: IGameWebGL) {
 
     return (
         <Box
-            sx={{
-            
-            }}
         >
             {!isLoaded
                 ? <CircularProgressWithLabel value={loadingProgression} />
@@ -80,9 +77,9 @@ export default function GameWebGL(props: IGameWebGL) {
                 style={{
                     display: isLoaded ? "block" : "none",
                     width: width,
-                    height :height,
-                    // height: "1024px",
-                    // maxHeight: "1024px"
+                    height: height,
+                    maxWidth: "768px",
+                    maxHeight: "1024px"
                 }}
             />
         </Box>
