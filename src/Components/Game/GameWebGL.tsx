@@ -78,8 +78,8 @@ export default function GameWebGL(props: IGameWebGL) {
                 tabIndex={1}
                 style={{
                     display: isLoaded ? "block" : "none",
-                    width: "360px",
-                    height: "640px",
+                    width: "1280PX",
+                    height: "1920px",
                 }}
             />
         </Box>
