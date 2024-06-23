@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Unity, useUnityContext, } from "react-unity-webgl";
 import { Box, Button, } from "@mui/material";
 import CircularProgressWithLabel from "../CircularProgress/CircularProgressWithLabel.tsx";
@@ -24,6 +24,10 @@ export default function GameWebGL(props: IGameWebGL) {
             preserveDrawingBuffer: true,
         },
     });
+
+    useEffect(() => {
+        requestFullscreen(true);
+    }, []);
 
     return (
         <Box
