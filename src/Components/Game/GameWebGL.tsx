@@ -1,7 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Unity, useUnityContext, } from "react-unity-webgl";
 import { Box, Button, } from "@mui/material";
 import CircularProgressWithLabel from "../CircularProgress/CircularProgressWithLabel.tsx";
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height
+  };
+}
+
+export function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
+}
 
 export interface IGameWebGL {
 }
@@ -10,6 +33,8 @@ export interface IGameWebGL {
 const telegram = window.Telegram.WebApp;
 
 export default function GameWebGL(props: IGameWebGL) {
+    const { height, width } = useWindowDimensions();
+
     const {
         unityProvider,
         isLoaded,
@@ -51,7 +76,7 @@ export default function GameWebGL(props: IGameWebGL) {
             {!isLoaded
                 ? <CircularProgressWithLabel value={loadingProgression} />
                 : <Box display='flex' justifyContent='flex-end' marginRight={4}>
-                    <Button onClick={() => requestFullscreen(true)}>Full Screen</Button>
+                    {/* <Button onClick={() => requestFullscreen(true)}>Full Screen</Button> */}
                 </Box>
             }
             
@@ -60,8 +85,8 @@ export default function GameWebGL(props: IGameWebGL) {
                 tabIndex={1}
                 style={{
                     display: isLoaded ? "block" : "none",
-                    // width: "768px",
-                    // maxWidth: "768px",
+                    width: width,
+                    height :height,
                     // height: "1024px",
                     // maxHeight: "1024px"
                 }}
