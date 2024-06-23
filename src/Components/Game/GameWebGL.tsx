@@ -70,7 +70,6 @@ export default function GameWebGL(props: IGameWebGL) {
             {!isLoaded
                 ? <CircularProgressWithLabel value={loadingProgression} />
                 : <Box display='flex' justifyContent='flex-end' marginRight={4}>
-                    <Button onClick={() => requestFullscreen(true)}>Full Screen</Button>
                 </Box>
             }
             
