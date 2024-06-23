@@ -78,8 +78,6 @@ export default function GameWebGL(props: IGameWebGL) {
                     display: isLoaded ? "block" : "none",
                     width: width,
                     height: height,
-                    maxWidth: "720px",
-                    maxHeight: "1280px"
                 }}
             />
         </Box>
