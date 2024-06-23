@@ -6,7 +6,6 @@ import { initBot } from './Components/telegramBot/TelegramBot.ts';
 function App() {
 
     useEffect(() => {
-        initBot();
     }, []);
  
     return (
