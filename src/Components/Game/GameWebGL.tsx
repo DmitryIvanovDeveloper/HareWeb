@@ -6,6 +6,9 @@ import CircularProgressWithLabel from "../CircularProgress/CircularProgressWithL
 export interface IGameWebGL {
 }
 
+//@ts-ignore
+const telegram = window.Telegram.WebApp;
+
 export default function GameWebGL(props: IGameWebGL) {
     const {
         unityProvider,
@@ -26,6 +29,7 @@ export default function GameWebGL(props: IGameWebGL) {
     });
 
     useEffect(() => {
+        telegram.ready();
         if (!isLoaded) {
             return;
         }
