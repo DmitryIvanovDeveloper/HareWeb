@@ -64,13 +64,7 @@ export default function GameWebGL(props: IGameWebGL) {
     return (
         <Box
             sx={{
-                margin: 2,
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: "center",
-                alignItems: 'center',
-                width: '100%',
-                height: '1000px'
+            
             }}
         >
             {!isLoaded
