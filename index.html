@@ -109,7 +109,9 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.initDataUnsafe.user.id );
+                console.log(JSON.stringify(window.Telegram.WebApp));
+
+                unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.initDataUnsafe.user.access_token );
                 unityInstance.SendMessage('WebGL', 'PlayerDataTest', "Gui");
 
                 loadingBar.style.display = "none";
