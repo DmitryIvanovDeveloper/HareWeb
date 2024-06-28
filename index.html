@@ -103,6 +103,8 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      window.Telegram.WebApp.isExpanded = true;
+
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
@@ -110,6 +112,8 @@
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
+                  unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.InitData);
+                  unityInstance.SendMessage('WebGL', 'PlayerDataTest', "Gui");
                 };
               }).catch((message) => {
                 alert(message);
@@ -117,9 +121,6 @@
             };
 
       document.body.appendChild(script);
-
-      window.Telegram.WebApp.isExpanded = true;
-      console.log(window.Telegram.WebApp.InitData)
 
     </script>
     <script>
