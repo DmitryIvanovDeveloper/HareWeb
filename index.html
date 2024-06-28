@@ -23,6 +23,7 @@
         <div id="unity-build-title">Hare</div>
       </div>
     </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
 
       var container = document.querySelector("#unity-container");
@@ -117,6 +118,11 @@
 
       document.body.appendChild(script);
 
+      window.Telegram.WebApp.isExpanded = true;
+      console.log(window.Telegram.WebApp.InitData)
+
+    </script>
+    <script>
     </script>
   </body>
 </html>
