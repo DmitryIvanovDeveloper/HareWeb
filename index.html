@@ -113,7 +113,7 @@
                 loadingBar.style.display = "none";
                 console.log(JSON.stringify(window.Telegram.WebApp));
                 
-                unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.initDataUnsafe.initDate );
+                unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.initDate );
                 unityInstance.SendMessage('WebGL', 'PlayerDataTest', "Gui");
 
                 loadingBar.style.display = "none";
