@@ -112,9 +112,8 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 console.log(JSON.stringify(window.Telegram.WebApp));
-                
-                unityInstance.SendMessage('WebGL', 'PlayerData', window.Telegram.WebApp.initDate );
-                unityInstance.SendMessage('WebGL', 'PlayerDataTest', "Gui");
+                window.Telegram.WebApp.expand();
+                unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp.initDate );
 
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
