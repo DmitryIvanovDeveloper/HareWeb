@@ -112,7 +112,7 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
 
-                console.log(JSON.parse(window.Telegram.WebApp.initDatа));
+                console.log(JSON.stringify(window.Telegram.WebApp.initDatа));
                 console.log("Test");
                 window.Telegram.WebApp.expand();
                 unityInstance.SendMessage('WebGL', 'InitData', 'DFDF');
