@@ -111,12 +111,10 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-
-                console.log(window.Telegram.WebApp.initDatа);
-                console.log("Test");
+                console.log(JSON.parse(window.Telegram.WebApp));
                 window.Telegram.WebApp.expand();
-                unityInstance.SendMessage('WebGL', 'InitData', 'DFDF');
-                
+                unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp.initDatа );
+
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
