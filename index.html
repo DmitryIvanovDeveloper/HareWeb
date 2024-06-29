@@ -111,7 +111,9 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
+
                 console.log(JSON.stringify(window.Telegram.WebApp.initDatа));
+                console.log("Test");
                 window.Telegram.WebApp.expand();
                 unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp.initDatа );
 
