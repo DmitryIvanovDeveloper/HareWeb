@@ -105,15 +105,15 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       window.Telegram.WebApp.isExpanded = true;
+      window.Telegram.WebApp.expand();
+      console.log( window.Telegram.WebApp["initData"]);
 
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                window.Telegram.WebApp.expand();
                 unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
-                console.log( window.Telegram.WebApp["initData"]);
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
