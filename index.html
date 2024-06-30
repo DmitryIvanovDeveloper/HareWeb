@@ -115,10 +115,6 @@
                 unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                 loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                
-                };
               }).catch((message) => {
                 alert(message);
               });
