@@ -105,15 +105,11 @@
       }
 
       container.style.display = "none";
-
-      loadImage.style.width = "360px";
-      loadImage.style.height = "640px";
       
-      loadImage.style.display = "block";
       loadingBar.style.display = "block";
       
       loadImage.style.height = window.Telegram.WebApp["height"];
-      
+
       var script = document.createElement("script");
       script.src = loaderUrl;
       window.Telegram.WebApp.isExpanded = true;
