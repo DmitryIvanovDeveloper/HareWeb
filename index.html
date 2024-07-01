@@ -112,7 +112,8 @@
       loadImage.style.display = "block";
       loadingBar.style.display = "block";
       
-
+      loadImage.style.height = window.Telegram.WebApp["height"];
+      
       var script = document.createElement("script");
       script.src = loaderUrl;
       window.Telegram.WebApp.isExpanded = true;
