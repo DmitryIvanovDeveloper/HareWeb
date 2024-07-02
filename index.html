@@ -14,7 +14,6 @@
 <body>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
-        <img id="meeting-image"  src="./rabbit_post.png" ></img>
 
         <div id="unity-loading-bar">
 
@@ -42,7 +41,6 @@
         var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
         var loaderImage = document.querySelector("#loader-image");
-        var meetingImage = document.querySelector("#meeting-image");
 
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
@@ -134,13 +132,13 @@
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                 window.Telegram.WebApp.expand();
 
-                loadingBar.style.display = "none";
                 canvas.style.display = "none";
                 meetingImage.style.display = "block";
                 
                 setTimeout(function () {
                     canvas.style.display = "block";
-                    meetingImage.style.display = "none";
+                    loadingBar.style.display = "none";
+
                 }, 3000);
 
             }).catch((message) => {
