@@ -14,7 +14,7 @@
 <body>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
-        <img id="meeting-image"  src="./rabbit_post.png" style="display: none;"></img>
+        <img id="meeting-image"  src="./rabbit_post.png" ></img>
 
         <div id="unity-loading-bar">
 
@@ -117,6 +117,8 @@
         loaderImage.style.display = "block";
         loaderImage.style.width = "360px";
         loaderImage.style.height = window.Telegram.WebApp["height"];
+
+        meetingImage.style.display = "none";
 
         var script = document.createElement("script");
         script.src = loaderUrl;
