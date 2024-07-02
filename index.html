@@ -128,8 +128,13 @@
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                 window.Telegram.WebApp.expand();
 
-                console.log( window.Telegram.WebApp["initData"]);
                 loadingBar.style.display = "none";
+
+                      setTimeout(function() {
+                      loadImage.remove(div);
+                  updateBannerVisibility();
+                }, 1000);
+
               }).catch((message) => {
                 alert(message);
               });
