@@ -125,7 +125,8 @@
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
 
-                console.log(window.Telegram.WebApp["height"]);
+                console.log(JSON.stringify(window.Telegram.WebView));
+                console.log(JSON.stringify(window.Telegram.WebApp));
                 unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                 window.Telegram.WebApp.expand();
