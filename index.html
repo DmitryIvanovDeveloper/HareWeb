@@ -120,7 +120,8 @@
         window.Telegram.WebApp.isExpanded = true;
 
         canvas.style.display = "none";
-
+        canvas.style.width = "360px";
+        
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
