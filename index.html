@@ -119,6 +119,8 @@
 
         window.Telegram.WebApp.isExpanded = true;
 
+        canvas.style.display = "none";
+
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
@@ -129,8 +131,6 @@
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["viewportHeight"]);
                 window.Telegram.WebApp.expand();
 
-                canvas.style.display = "none";
-                
                 setTimeout(function () {
                      canvas.style.display = "block";
                      loadingBar.style.display = "none";
