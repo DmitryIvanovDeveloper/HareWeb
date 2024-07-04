@@ -12,12 +12,12 @@
 </head>
 
 <body>
-    <video  autoplay loop muted playsinline controls>
-        <source id="loader-image" src="Preloader.mp4" type="video/mp4">
-      </video>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
         <div id="unity-loading-bar">
+
+            <!-- <div id="unity-logo"></div> -->
+            <img id="loader-image" src="./rabbit_post.png"></img>
 
             <div id="unity-progress-bar-empty">
                 <div id="unity-progress-bar-full"></div>
@@ -98,7 +98,6 @@
             // To lower canvas resolution on mobile devices to gain some
             // performance, uncomment the following line:
             // config.devicePixelRatio = 1;
-            loadImage.style.height = window.Telegram.WebApp["height"];
 
 
         } else {
@@ -113,13 +112,14 @@
         loadImage.style.display = "block";
         loadingBar.style.display = "block";
 
+        loadImage.style.width = "360px";
+        loadImage.style.height = window.Telegram.WebApp["height"];
+
         var script = document.createElement("script");
         script.src = loaderUrl;
 
         window.Telegram.WebApp.isExpanded = true;
 
-        canvas.style.display = "none";
-        
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
@@ -130,6 +130,8 @@
                 unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["viewportHeight"]);
                 window.Telegram.WebApp.expand();
 
+                canvas.style.display = "none";
+                
                 setTimeout(function () {
                      canvas.style.display = "block";
                      loadingBar.style.display = "none";
