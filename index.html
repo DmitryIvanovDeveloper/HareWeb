@@ -98,6 +98,7 @@
             // To lower canvas resolution on mobile devices to gain some
             // performance, uncomment the following line:
             // config.devicePixelRatio = 1;
+            loadImage.style.height = window.Telegram.WebApp["height"];
 
 
         } else {
@@ -112,15 +113,12 @@
         loadImage.style.display = "block";
         loadingBar.style.display = "block";
 
-        loadImage.style.height = window.Telegram.WebApp["height"];
-
         var script = document.createElement("script");
         script.src = loaderUrl;
 
         window.Telegram.WebApp.isExpanded = true;
 
         canvas.style.display = "none";
-        canvas.style.width = "360px";
         
         script.onload = () => {
             createUnityInstance(canvas, config, (progress) => {
