@@ -21,7 +21,7 @@
         <div id="unity-loading-bar" style="top: 80%;">
 
             <div  id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
+                <div id="unity-progress-bar-full" ></div>
             </div>
         </div>
         <!-- <div id="unity-warning"> </div> -->
@@ -115,13 +115,17 @@
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
+                setTimeout(() => {
+                    
+                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                    window.Telegram.WebApp.expand();
+                    
+                    canvas.style.display = "block";
+                    loader.style.display = "none";
+                    loadingBar.style.display = "none";
 
-                unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-                unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
-                window.Telegram.WebApp.expand();
-                canvas.style.display = "block";
-
-                loader.style.display = "none";
+                }, 3000);
             }).catch((message) => {
                 alert(message);
             });
