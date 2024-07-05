@@ -132,10 +132,10 @@
                 window.Telegram.WebApp.expand();
 
                 canvas.style.display = "none";
-                
+
                 setTimeout(function () {
-                     canvas.style.display = "block";
-                     loadingBar.style.display = "none";
+                    canvas.style.display = "block";
+                    loadingBar.style.display = "none";
                 }, 3000);
 
             }).catch((message) => {
@@ -148,27 +148,27 @@
     </script>
     <script>
         async function passCopyToBrowser(text) {
-            if (typeof (navigator.clipboard) == 'undefined') {
-                console.log('navigator.clipboard');
-                var textArea = document.createElement("textarea");
-                textArea.value = text;
-                textArea.style.position = "fixed";  //avoid scrolling to bottom
-                document.body.appendChild(textArea);
-                textArea.focus();
-                textArea.select();
-
-                try {
-                    var successful = document.execCommand('copy');
-                    var msg = successful ? 'successful' : 'unsuccessful';
-                    console.log(msg);
-                } catch (err) {
-                    // toastr.warning('Was not possible to copy te text: ', err);
-                }
-
-                document.body.removeChild(textArea)
-                return;
+            if (window.clipboardData && window.clipboardData.setData) {
+                // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+                return window.clipboardData.setData("Text", text);
             }
-          
+            else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = text;
+                textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+                }
+                catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return prompt("Copy to clipboard: Ctrl+C, Enter", text);
+                }
+                finally {
+                    document.body.removeChild(textarea);
+                }
+            }
         }
 
 
