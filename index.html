@@ -147,31 +147,31 @@
 
     </script>
     <script>
-        async function passCopyToBrowser(text) {
-          // Navigator clipboard api needs a secure context (https)
+     if (typeof (navigator.clipboard) == 'undefined') {
+    console.log('navigator.clipboard');
+    var textArea = document.createElement("textarea");
+    textArea.value = linkToGo;
+    textArea.style.position = "fixed";  //avoid scrolling to bottom
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
 
-        // Use the 'out of viewport hidden text area' trick
-        const textArea = document.createElement("textarea");
-        textArea.value = text;
-            
-        // Move textarea out of the viewport so it's not visible
-        textArea.style.position = "absolute";
-        textArea.style.left = "-999999px";
-            
-        document.body.prepend(textArea);
-        textArea.select();
+    try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        toastr.info(msg);
+    } catch (err) {
+        toastr.warning('Was not possible to copy te text: ', err);
+    }
 
-        try {
-            document.execCommand('copy');
-        } catch (error) {
-            console.error(error);
-        } finally {
-            textArea.remove();
-        }
-        }
-
-
-
+    document.body.removeChild(textArea)
+    return;
+}
+navigator.clipboard.writeText(linkToGo).then(function () {
+    toastr.info(`successful!`);
+}, function (err) {
+    toastr.warning('unsuccessful!', err);
+});
     </script>
 </body>
 
