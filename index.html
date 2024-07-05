@@ -148,10 +148,10 @@
     </script>
     <script>
        function passCopyToBrowser(text) {
-        input.value = text;
-                        setTimeout(() => {
-                navigator.clipboard.writeText(text)
-                }, 0)
+
+        navigator.clipboard.write([text])
+            .then(function () { alert('copied'); })
+            .catch(function (error) { alert(error); });
             // if (!navigator.clipboard) {
             //     return;
             // }
