@@ -21,7 +21,7 @@
         <div id="unity-loading-bar" style="top: 80%;">
 
             <div  id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full" ></div>
+                <div id="unity-progress-bar-full"></div>
             </div>
         </div>
         <!-- <div id="unity-warning"> </div> -->
@@ -36,7 +36,7 @@
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
 
-        loader.style.height = window.Telegram.WebApp["height"] + 100 ?? "650px";
+        loader.style.height = window.Telegram.WebApp["height"] ?? "650px";
 
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
@@ -94,8 +94,8 @@
             // To lower canvas resolution on mobile devices to gain some
             // performance, uncomment the following line:
             // config.devicePixelRatio = 1;
-            // canvas.style.width = "360px";
-            canvas.style.height = "640px";
+            loader.style.height = "100%";
+            loader.style.width = "100%";
 
         } else {
             // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
@@ -116,17 +116,12 @@
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
 
-                setTimeout(() => {
-                    
-                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
-                    window.Telegram.WebApp.expand();
-                    
-                    canvas.style.display = "block";
-                    loader.style.display = "none";
-                    loadingBar.style.display = "none";
+                unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                window.Telegram.WebApp.expand();
+                canvas.style.display = "block";
 
-                }, 3000);
+                loader.style.display = "none";
             }).catch((message) => {
                 alert(message);
             });
