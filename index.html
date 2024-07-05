@@ -116,12 +116,18 @@
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
 
-                unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-                unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
-                window.Telegram.WebApp.expand();
-                canvas.style.display = "block";
+                setTimeout(() => {
+                    
+                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                    window.Telegram.WebApp.expand();
+                    
+                    canvas.style.display = "block";
+                    loader.style.display = "none";
+                    loadingBar.style.display = "none";
 
-                loader.style.display = "none";
+                }, 3000);
+
             }).catch((message) => {
                 alert(message);
             });
