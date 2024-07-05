@@ -149,9 +149,7 @@
     <script>
         async function passCopyToBrowser(text) {
           // Navigator clipboard api needs a secure context (https)
-    if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(text);
-    } else {
+
         // Use the 'out of viewport hidden text area' trick
         const textArea = document.createElement("textarea");
         textArea.value = text;
@@ -170,7 +168,6 @@
         } finally {
             textArea.remove();
         }
-    }
         }
 
 
