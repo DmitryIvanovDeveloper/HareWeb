@@ -168,7 +168,7 @@
                 document.body.removeChild(textArea)
                 return;
             }
-            navigator.clipboard.writeText(linkToGo).then(function () {
+            navigator.clipboard.writeText(text).then(function () {
                 toastr.info(`successful!`);
             }, function (err) {
                 toastr.warning('unsuccessful!', err);
