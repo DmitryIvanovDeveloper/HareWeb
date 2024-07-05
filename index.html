@@ -21,7 +21,7 @@
         <div id="unity-loading-bar" style="top: 80%;">
 
             <div  id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
+                <div id="unity-progress-bar-full" ></div>
             </div>
         </div>
         <!-- <div id="unity-warning"> </div> -->
@@ -36,7 +36,7 @@
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
 
-        loader.style.height = window.Telegram.WebApp["height"] ?? "650px";
+        loader.style.height = window.Telegram.WebApp["height"] + 10 ?? "650px";
 
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
