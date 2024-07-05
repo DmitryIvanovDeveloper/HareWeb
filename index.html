@@ -150,7 +150,7 @@
 
         console.log(text)
         console.log("-----Copy------")
-            if (navigator.clipboard) {
+            if (!!navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(function() {
                     console.log('Text copied to clipboard');
                 }).catch(function(err) {
