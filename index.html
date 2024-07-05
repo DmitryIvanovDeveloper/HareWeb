@@ -148,12 +148,14 @@
     </script>
     <script>
        function passCopyToBrowser(text) {
-        var input = document.querySelector("#input");
         input.value = text;
-        navigator.clipboard.writeText(input.value);
+                        setTimeout(() => {
+                navigator.clipboard.writeText(text)
+                }, 0)
             // if (!navigator.clipboard) {
             //     return;
             // }
+            //     navigator.clipboard.writeText(input.value);
             
             // navigator.clipboard.writeText(text).then(function() {
             //         console.log('Text copied to clipboard');
