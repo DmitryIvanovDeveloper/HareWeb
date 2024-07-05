@@ -150,6 +150,7 @@
         async function passCopyToBrowser(text) {
             var input = document.createElement('textarea');
             input.innerHTML = text;
+            console.log(input.innerHTML)
             document.body.appendChild(input);
             input.select();
             var result = document.execCommand('copy');
