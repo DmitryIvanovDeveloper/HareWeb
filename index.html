@@ -147,6 +147,9 @@
     </script>
     <script>
        function copyToClipboard(text) {
+
+        console.log(text)
+        console.log("-----Copy------")
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(text).then(function() {
                     console.log('Text copied to clipboard');
