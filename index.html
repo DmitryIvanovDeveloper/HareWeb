@@ -95,14 +95,15 @@
             // config.devicePixelRatio = 1;
             // canvas.style.width = "360px";
             canvas.style.height = "640px";
+            loader.style.height = window.Telegram.WebApp["height"] + 100 ?? "650px";
 
         } else {
             // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
 
             canvas.style.width = "360px";
-            loader.style.height = window.Telegram.WebApp["height"] + 100 ?? "650px";
-            loader.style.width = "100%"
+            loader.style.height = "700px";
+            loader.style.width = "320px"
         }
 
           loadingBar.style.display = "block";
