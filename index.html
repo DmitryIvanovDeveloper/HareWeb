@@ -14,6 +14,7 @@
 <body>
     <div id="unity-container" class="unity-desktop">
         <canvas id="unity-canvas" width=360 height=640 tabindex="-1"></canvas>
+        <input id="input" style="display: none;"></input>
         <div id="unity-loading-bar">
 
             <!-- <div id="unity-logo"></div> -->
@@ -147,18 +148,18 @@
     </script>
     <script>
        function passCopyToBrowser(text) {
-
-        console.log(text)
-        console.log("-----Copy------")
-            if (!navigator.clipboard) {
-                return;
-            }
+        var input = document.querySelector("#input");
+        input.value = text;
+        navigator.clipboard.writeText(input.value);
+            // if (!navigator.clipboard) {
+            //     return;
+            // }
             
-            navigator.clipboard.writeText(text).then(function() {
-                    console.log('Text copied to clipboard');
-                }).catch(function(err) {
-                    console.error('Could not copy text: ', err);
-                });
+            // navigator.clipboard.writeText(text).then(function() {
+            //         console.log('Text copied to clipboard');
+            //     }).catch(function(err) {
+            //         console.error('Could not copy text: ', err);
+            //     });
 
             // var textArea = document.createElement("textarea");
             // textArea.value = text;
