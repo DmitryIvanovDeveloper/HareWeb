@@ -160,9 +160,9 @@
                 try {
                     var successful = document.execCommand('copy');
                     var msg = successful ? 'successful' : 'unsuccessful';
-                    toastr.info(msg);
+                    console.log(msg);
                 } catch (err) {
-                    toastr.warning('Was not possible to copy te text: ', err);
+                    // toastr.warning('Was not possible to copy te text: ', err);
                 }
 
                 document.body.removeChild(textArea)
