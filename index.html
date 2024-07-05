@@ -149,9 +149,14 @@
     <script>
        function passCopyToBrowser(text) {
 
-        navigator.clipboard.write([text])
-            .then(function () { alert('copied'); })
-            .catch(function (error) { alert(error); });
+        setTimeout(async () => {
+            await navigator.clipboard.writeText(text).then(function () {
+                console.log("Copy to clipboard successfully.");
+            }, function () {
+                console.log("Copy to clipboard unsuccessfully.");
+            });
+        });
+       
             // if (!navigator.clipboard) {
             //     return;
             // }
