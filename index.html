@@ -150,16 +150,16 @@
 
         console.log(text)
         console.log("-----Copy------")
-            if (!!navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(function() {
+            if (!navigator.clipboard) {
+                return;
+            }
+            
+            navigator.clipboard.writeText(text).then(function() {
                     console.log('Text copied to clipboard');
                 }).catch(function(err) {
                     console.error('Could not copy text: ', err);
                 });
 
-                return;
-            }
-            
             // var textArea = document.createElement("textarea");
             // textArea.value = text;
             // document.body.appendChild(textArea);
