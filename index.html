@@ -36,6 +36,7 @@
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
 
+        loader.style.height = window.Telegram.WebApp["height"] + 100 ?? "650px";
 
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
@@ -95,15 +96,12 @@
             // config.devicePixelRatio = 1;
             // canvas.style.width = "360px";
             canvas.style.height = "640px";
-            loader.style.height = window.Telegram.WebApp["height"] + 100 ?? "650px";
 
         } else {
             // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-
             canvas.style.width = "360px";
-            loader.style.height = "700px";
-            loader.style.width = "320px"
+            canvas.style.height = "640px";
         }
 
           loadingBar.style.display = "block";
