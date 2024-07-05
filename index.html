@@ -147,40 +147,28 @@
 
     </script>
     <script>
-       function passCopyToBrowser(text) {
+        function passCopyToBrowser(text) {
+            readClipboardFromDevTools().then((r) => console.log("Returned value: ", r));
+        }
 
-        setTimeout(async () => {
-            await navigator.clipboard.writeText(text).then(function () {
-                console.log("Copy to clipboard successfully.");
-            }, function () {
-                console.log("Copy to clipboard unsuccessfully.");
-            });
-        }, 2000);
-       
-            // if (!navigator.clipboard) {
-            //     return;
-            // }
-            //     navigator.clipboard.writeText(input.value);
-            
-            // navigator.clipboard.writeText(text).then(function() {
-            //         console.log('Text copied to clipboard');
-            //     }).catch(function(err) {
-            //         console.error('Could not copy text: ', err);
-            //     });
+        function readClipboardFromDevTools() {
+            return new Promise((resolve, reject) => {
+                const _asyncCopyFn = (async () => {
 
-            // var textArea = document.createElement("textarea");
-            // textArea.value = text;
-            // document.body.appendChild(textArea);
-            // textArea.focus();
-            // textArea.select();
-            // try {
-            //     document.execCommand('copy');
-            //     console.log('Text copied to clipboard');
-            // } catch (err) {
-            //     console.error('Could not copy text: ', err);
-            // }
-            // document.body.removeChild(textArea);
-            }
+                try {
+                    const value = await navigator.clipboard.readText();
+                    console.log(`${value} is read!`);
+                    resolve(value);
+                } catch (e) {
+                    reject(e);
+                }
+                window.removeEventListener("focus", _asyncCopyFn);
+        });
+    
+        window.addEventListener("focus", _asyncCopyFn);
+        console.log("Hit <Tab> to give focus back to document (or we will face a DOMException);");
+    });
+}
 
     </script>
 </body>
