@@ -117,7 +117,7 @@
             }).then((unityInstance) => {
                 setTimeout(() => {
                     
-                    consoel.log( window.Telegram.WebApp);
+                    console.log( window.Telegram.WebApp);
                     unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                     unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                     window.Telegram.WebApp.expand();
