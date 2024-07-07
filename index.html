@@ -16,12 +16,12 @@
     <div id="unity-container" class="unity-desktop">
 
         <canvas id="unity-canvas" width=360 height=640 style="display: none;" tabindex="-1"></canvas>
-        <iframe id="loader-image"  title="Inline Frame Example" src="./Preloader/demo/data.html"></iframe>
-        
+        <iframe id="loader-image" title="Inline Frame Example" src="./Preloader/demo/data.html"></iframe>
+
         <div id="unity-loading-bar" style="top: 80%;">
 
-            <div  id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full" ></div>
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
             </div>
         </div>
         <!-- <div id="unity-warning"> </div> -->
@@ -104,7 +104,7 @@
             canvas.style.height = "640px";
         }
 
-          loadingBar.style.display = "block";
+        loadingBar.style.display = "block";
         canvas.style.display = "none";
 
         var script = document.createElement("script");
@@ -116,12 +116,12 @@
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
                 setTimeout(() => {
-                    
-                    console.log(  window.Telegram.WebApp["initData"]);
+
+                    console.log(window.Telegram.WebApp["initData"]);
                     unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                     unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
                     window.Telegram.WebApp.expand();
-                    
+
                     canvas.style.display = "block";
                     loader.style.display = "none";
                     loadingBar.style.display = "none";
@@ -135,7 +135,33 @@
         document.body.appendChild(script);
 
     </script>
+
     <script>
+        async function passCopyToBrowser(textToCopy) {
+            // Navigator clipboard api needs a secure context (https)
+            if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(textToCopy);
+            } else {
+                // Use the 'out of viewport hidden text area' trick
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+
+                // Move textarea out of the viewport so it's not visible
+                textArea.style.position = "absolute";
+                textArea.style.left = "-999999px";
+
+                document.body.prepend(textArea);
+                textArea.select();
+
+                try {
+                    document.execCommand('copy');
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    textArea.remove();
+                }
+            }
+        }
     </script>
 </body>
 
