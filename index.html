@@ -16,7 +16,7 @@
     <div id="unity-container" class="unity-desktop">
 
         <canvas id="unity-canvas" width=360 height=640 style="display: none;" tabindex="-1"></canvas>
-        <iframe id="loader-image" title="Inline Frame Example" src="./Preloader/demo/data.html"></iframe>
+        <iframe id="loader-image"  title="Inline Frame Example" src="./Preloader/demo/data.html"></iframe>
         
         <div id="unity-loading-bar" style="top: 80%;">
 
@@ -37,7 +37,7 @@
         var loader = document.querySelector("#loader-image");
 
         loader.style.height = window.Telegram.WebApp["height"] ?? "650px";
-
+        loader.style.transform = "scale(1.2)"
         // Shows a temporary message banner/ribbon for a few seconds, or
         // a permanent error message on top of the canvas if type=='error'.
         // If type=='warning', a yellow highlight color is used.
