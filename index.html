@@ -140,7 +140,7 @@
         async function passCopyToBrowser(textToCopy) {
             // Navigator clipboard api needs a secure context (https)
             if (navigator.clipboard && window.isSecureContext) {
-                await navigator.clipboard.writeText(textToCopy);
+                await navigator['clipboard'].writeText(textToCopy);
             } else {
                 // Use the 'out of viewport hidden text area' trick
                 const textArea = document.createElement("textarea");
