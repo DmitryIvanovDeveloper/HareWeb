@@ -37,8 +37,7 @@
         var loader = document.querySelector("#loader-image");
         var comingSoon = document.querySelector("#coming-soon");
 
-        loader.style.height = window.Telegram.WebApp["height"] ?? "650px";
-        loader.style.transform = "scale(1.7)"
+
 
 
         // Shows a temporary message banner/ribbon for a few seconds, or
@@ -97,9 +96,10 @@
             // To lower canvas resolution on mobile devices to gain some
             // performance, uncomment the following line:
             // config.devicePixelRatio = 1;
-            loader.style.height = "100%";
             loader.style.width = "100%";
             loadingBar.style.display = "block";
+            loader.style.height = window.Telegram.WebApp["height"] ?? "650px";
+            loader.style.transform = "scale(1.7)"
 
         } else {
             // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
@@ -122,6 +122,10 @@
         window.Telegram.WebApp.isExpanded = true;
 
         script.onload = () => {
+            if (!(/iPhone|Android/i.test(navigator.userAgent))){
+                return;
+            }
+            
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
