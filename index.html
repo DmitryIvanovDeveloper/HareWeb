@@ -52,6 +52,7 @@
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
         var comingSoon = document.querySelector("#coming-soon");
+        var comingSoonButtons = document.querySelector("#coming-soon-buttons");
 
 
 
@@ -118,12 +119,13 @@
             loader.style.transform = "scale(1.7)"
             
             comingSoon.style.display = "none";
-            comingSoonButton.style.display = "none";
+            comingSoonButtons.style.display = "none";
         } else {
             // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
             comingSoon.style.height = window.Telegram.WebApp["height"] ?? "650px";
             comingSoon.style.display = "block";
+            comingSoonButtons.style.display = "block";
             
 
             loader.style.display = "none";
