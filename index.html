@@ -18,8 +18,9 @@
         <canvas id="unity-canvas" width=360 height=640 style="display: none;" tabindex="-1"></canvas>
         <iframe id="loader-image" title="Inline Frame Example" src="./Preloader/demo/data.html"></iframe>
         <img id="coming-soon" src="./Coming soon!.png" style="display: none;"  height=100%>
-            <div id="coming-soon-buttons" class="grid-container" 
+            <div id="coming-soon-buttons" class="grid-container"  
                 style= "
+                display: none;
                 position:absolute; 
                 bottom: 50px; 
                 left: 30px;
@@ -123,7 +124,7 @@
 
             comingSoon.style.height = window.Telegram.WebApp["height"] ?? "650px";
             comingSoon.style.display = "block";
-            loader.style.transform = "scale(1.2)"
+            
 
             loader.style.display = "none";
             loadingBar.style.display = "none";
