@@ -27,7 +27,7 @@
                 grid-template-rows: 1fr; 
                 "
             >
-                <input type="image" width="120px"  src="Frame 111.png"></input>
+                <input type="image" width="120px"  src="Frame 111.png" onclick="window.Telegram.WebApp.openTelegramLink('https://t.me/Hare_ton')"></input>
                 <input type="image" width="120px"  src="Frame 108.png"></input>
                 <input type="image" width="120px"  src="Frame 109.png"></input>
                 <input type="image" width="120px"  src="Frame 112.png"></input>
@@ -193,16 +193,6 @@
                     textArea.remove();
                 }
             }
-
-            function getDeviceType() { 
-                const userAgent = navigator.userAgent; 
-                if (/Mobi|Android/i.test(userAgent)) { 
-                    return 'Mobile'; 
-                } else if (/iPad|Tablet|PlayBook/i.test(userAgent)) { 
-                    return 'Tablet'; 
-                } else { 
-                    return 'Desktop'; 
-                } }
         }
     </script>
 </body>
