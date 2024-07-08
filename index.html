@@ -107,12 +107,11 @@
             comingSoon.style.height = window.Telegram.WebApp["height"] ?? "650px";
             comingSoon.style.transform = "scale(1.2)"
             comingSoon.style.display = "block";
-
+            comingSoon.style.overflow = "hidden";
+            
             loader.style.display = "none";
             loadingBar.style.display = "none";
             canvas.style.display = "none";
-            // canvas.style.width = "360px";
-            // canvas.style.height = "640px";
         }
 
         canvas.style.display = "none";
@@ -125,7 +124,7 @@
             if (!(/iPhone|Android/i.test(navigator.userAgent))){
                 return;
             }
-            
+
             createUnityInstance(canvas, config, (progress) => {
                 progressBarFull.style.width = 100 * progress + "%";
             }).then((unityInstance) => {
