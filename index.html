@@ -137,6 +137,7 @@
         var script = document.createElement("script");
         script.src = loaderUrl;
         window.Telegram.WebApp.isExpanded = true;
+        window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand();
 
         script.onload = () => {
