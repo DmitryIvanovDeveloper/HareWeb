@@ -137,6 +137,7 @@
         var script = document.createElement("script");
         script.src = loaderUrl;
         window.Telegram.WebApp.isExpanded = true;
+        window.Telegram.WebApp.expand();
 
         script.onload = () => {
             if (!(/iPhone|Android/i.test(navigator.userAgent))) {
@@ -151,7 +152,6 @@
                     console.log(window.Telegram.WebApp["initData"]);
                     unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
                     unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
-                    window.Telegram.WebApp.expand();
 
                     canvas.style.display = "block";
                     loader.style.display = "none";
@@ -183,7 +183,6 @@
             } else {
                 // Use the 'out of viewport hidden text area' trick
                 const textArea = document.createElement("textarea");
-                textArea.focus();
                 textArea.value = textToCopy;
 
                 // Move textarea out of the viewport so it's not visible
