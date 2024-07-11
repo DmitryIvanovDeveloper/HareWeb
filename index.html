@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 
+<!-- TODO: Refactor the code -->
 <head>
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -168,6 +169,7 @@
 
     <script>
         async function passCopyToBrowser(textToCopy) {
+            this.focus();     
             // Navigator clipboard api needs a secure context (https)
             if (navigator.clipboard && window.isSecureContext) {
                 try {
