@@ -140,7 +140,7 @@
         window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand();
 
-        script.onload = () => {
+        script.onload = async () => {
             if (!(/iPhone|Android/i.test(navigator.userAgent))) {
                 return;
             }
