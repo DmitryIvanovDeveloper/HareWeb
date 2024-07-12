@@ -215,6 +215,9 @@
     </script>
 
     <script>
+        function openTelegramLink(link) {
+            window.Telegram.WebApp.openTelegramLink(link);
+        }
         async function passCopyToBrowser(textToCopy) {
             this.focus();
             // Navigator clipboard api needs a secure context (https)
