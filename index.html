@@ -14,13 +14,27 @@
     <style>
         /* Контейнер прогресс-бара */
         .progress-container {
-            width: 300px;
+            width: 350px;
             /* Ширина контейнера */
-            height: 30px;
+            height: 55px;
             /* Высота контейнера */
             background: url('./Progress.png') no-repeat;
             /* Фоновое изображение контейнера */
             background-size: cover;
+            /* Масштабирование фонового изображения по размеру контейнера */
+            position: relative;
+          
+        }
+        .progress-container-inner {
+            width: 80%;
+            /* Ширина контейнера */
+            height: 100%;
+            top: 9px;
+            left: 35px;
+            /* Высота контейнера */
+            background: url('./bar_bg_1.png') no-repeat;
+            /* Фоновое изображение контейнера */
+            background-size:contain;
             /* Масштабирование фонового изображения по размеру контейнера */
             position: relative;
         }
@@ -30,7 +44,7 @@
             height: 100%;
             background: url('./Bar.png') no-repeat;
             /* Фоновое изображение заполнения */
-            background-size: cover;
+            background-size: contain;
             /* Масштабирование фонового изображения по размеру заполнения */
             width: 0%;
             /* Начальная ширина заполнения */
@@ -63,7 +77,10 @@
         <div id="unity-loading-bar" style="top: 80%;">
 
             <div class="progress-container">
-                <div class="progress-fill" id="progressBar"></div>
+                <div class="progress-container-inner" id="progress-container-inner">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+               
             </div>
         </div>
     </div>
