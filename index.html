@@ -2,6 +2,7 @@
 <html lang="en-us">
 
 <!-- TODO: Refactor the code -->
+
 <head>
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -141,27 +142,29 @@
         window.Telegram.WebApp.expand();
 
         script.onload = async () => {
-            if (!(/iPhone|Android/i.test(navigator.userAgent))) {
-                return;
-            }
+            await new Promise((reject, resolve) => {
+                if (!(/iPhone|Android/i.test(navigator.userAgent))) {
+                    return;
+                }
 
-            createUnityInstance(canvas, config, (progress) => {
-                progressBarFull.style.width = 100 * progress + "%";
-            }).then((unityInstance) => {
-                setTimeout(() => {
+                createUnityInstance(canvas, config, (progress) => {
+                    progressBarFull.style.width = 100 * progress + "%";
+                }).then((unityInstance) => {
+                    setTimeout(() => {
 
-                    console.log(window.Telegram.WebApp["initData"]);
-                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                        console.log(window.Telegram.WebApp["initData"]);
+                        unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                        unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
 
-                    canvas.style.display = "block";
-                    loader.remove();
-                    loadingBar.remove();
+                        canvas.style.display = "block";
+                        loader.remove();
+                        loadingBar.remove();
 
-                }, 3000);
-            }).catch((message) => {
-                alert(message);
-            });
+                    }, 3000);
+                }).catch((message) => {
+                    alert(message);
+                });
+            })
         };
 
         document.body.appendChild(script);
@@ -170,14 +173,14 @@
 
     <script>
         async function passCopyToBrowser(textToCopy) {
-            this.focus();     
+            this.focus();
             // Navigator clipboard api needs a secure context (https)
             if (navigator.clipboard && window.isSecureContext) {
                 try {
                     await navigator['clipboard'].writeText(textToCopy);
 
                 }
-                catch (error){
+                catch (error) {
                     console.log(error);
                 }
 
