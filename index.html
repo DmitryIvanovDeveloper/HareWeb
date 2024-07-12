@@ -145,23 +145,23 @@
                 return;
             }
 
-            // createUnityInstance(canvas, config, (progress) => {
-            //     progressBarFull.style.width = 100 * progress + "%";
-            // }).then((unityInstance) => {
-            //     setTimeout(() => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                setTimeout(() => {
 
-            //         console.log(window.Telegram.WebApp["initData"]);
-            //         unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-            //         unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                    console.log(window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
 
-            //         canvas.style.display = "block";
-            //         loader.style.display = "none";
-            //         loadingBar.style.display = "none";
+                    canvas.style.display = "block";
+                    loader.style.display = "none";
+                    loadingBar.style.display = "none";
 
-            //     }, 3000);
-            // }).catch((message) => {
-            //     alert(message);
-            // });
+                }, 3000);
+            }).catch((message) => {
+                alert(message);
+            });
         };
 
         document.body.appendChild(script);
