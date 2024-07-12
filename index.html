@@ -11,6 +11,31 @@
     <title>Unity WebGL Player | Hare</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+        /* Контейнер прогресс-бара */
+        .progress-container {
+            width: 300px;
+            /* Ширина контейнера */
+            height: 30px;
+            /* Высота контейнера */
+            background: url('./Progress.png') no-repeat;
+            /* Фоновое изображение контейнера */
+            background-size: cover;
+            /* Масштабирование фонового изображения по размеру контейнера */
+            position: relative;
+        }
+
+        /* Заполняющая часть прогресс-бара */
+        .progress-fill {
+            height: 100%;
+            background: url('./Bar.png') no-repeat;
+            /* Фоновое изображение заполнения */
+            background-size: cover;
+            /* Масштабирование фонового изображения по размеру заполнения */
+            width: 0%;
+            /* Начальная ширина заполнения */
+        }
+    </style>
 </head>
 
 <body>
@@ -36,18 +61,21 @@
         </img>
 
         <div id="unity-loading-bar" style="top: 80%;">
-            <div id="unity-progress-bar-empty">
-                <div id="unity-progress-bar-full"></div>
+
+            <div class="progress-container">
+                <div class="progress-fill" id="progressBar"></div>
             </div>
         </div>
-        <!-- <div id="unity-warning"> </div> -->
+    </div>
+    </div>
+    <!-- <div id="unity-warning"> </div> -->
     </div>
     <script>
         eruda.init();
         var container = document.querySelector("#unity-container");
         var canvas = document.querySelector("#unity-canvas");
         var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#unity-progress-bar-full");
+        var progressBarFull = document.querySelector("#progressBar");
         var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
@@ -141,30 +169,28 @@
         window.Telegram.WebApp.ready();
         window.Telegram.WebApp.expand();
 
-        script.onload = async () => {
-            await new Promise((reject, resolve) => {
-                if (!(/iPhone|Android/i.test(navigator.userAgent))) {
-                    return;
-                }
+        script.onload = () => {
+            if (!(/iPhone|Android/i.test(navigator.userAgent))) {
+                return;
+            }
 
-                createUnityInstance(canvas, config, (progress) => {
-                    progressBarFull.style.width = 100 * progress + "%";
-                }).then((unityInstance) => {
-                    setTimeout(() => {
+            createUnityInstance(canvas, config, (progress) => {
+                progressBarFull.style.width = 100 * progress + "%";
+            }).then((unityInstance) => {
+                setTimeout(() => {
 
-                        console.log(window.Telegram.WebApp["initData"]);
-                        unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
-                        unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
+                    console.log(window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'InitData', window.Telegram.WebApp["initData"]);
+                    unityInstance.SendMessage('WebGL', 'SetDeviceHeight', window.Telegram.WebApp["height"]);
 
-                        canvas.style.display = "block";
-                        loader.remove();
-                        loadingBar.remove();
+                    canvas.style.display = "block";
+                    loader.remove();
+                    loadingBar.remove();
 
-                    }, 3000);
-                }).catch((message) => {
-                    alert(message);
-                });
-            })
+                }, 3000);
+            }).catch((message) => {
+                alert(message);
+            });
         };
 
         document.body.appendChild(script);
