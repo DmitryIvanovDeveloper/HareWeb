@@ -2,7 +2,6 @@
 <html lang="en-us">
 
 <!-- TODO: Refactor the code -->
-
 <head>
     <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -11,45 +10,6 @@
     <title>Unity WebGL Player | Hare</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <style>
-        /* Контейнер прогресс-бара */
-        .progress-container {
-            width: 350px;
-            /* Ширина контейнера */
-            height: 55px;
-            /* Высота контейнера */
-            background: url('./Progress.png') no-repeat;
-            /* Фоновое изображение контейнера */
-            background-size: cover;
-            /* Масштабирование фонового изображения по размеру контейнера */
-            position: relative;
-          
-        }
-        .progress-container-inner {
-            width: 70%;
-            /* Ширина контейнера */
-            height: 100%;
-            top: 11px;
-            left: 50px;
-            /* Высота контейнера */
-            background: url('./bar_bg_1.png') no-repeat;
-            /* Фоновое изображение контейнера */
-            background-size:contain;
-            /* Масштабирование фонового изображения по размеру контейнера */
-            position: relative;
-        }
-
-        /* Заполняющая часть прогресс-бара */
-        .progress-fill {
-            height: 100%;
-            background: url('./Bar.png') no-repeat;
-            /* Фоновое изображение заполнения */
-            background-size: contain;
-            /* Масштабирование фонового изображения по размеру заполнения */
-            width: 0%;
-            /* Начальная ширина заполнения */
-        }
-    </style>
 </head>
 
 <body>
@@ -75,24 +35,18 @@
         </img>
 
         <div id="unity-loading-bar" style="top: 80%;">
-
-            <div class="progress-container">
-                <div class="progress-container-inner" id="progress-container-inner">
-                    <div class="progress-fill" id="progressBar"></div>
-                </div>
-               
+            <div id="unity-progress-bar-empty">
+                <div id="unity-progress-bar-full"></div>
             </div>
         </div>
-    </div>
-    </div>
-    <!-- <div id="unity-warning"> </div> -->
+        <!-- <div id="unity-warning"> </div> -->
     </div>
     <script>
         eruda.init();
         var container = document.querySelector("#unity-container");
         var canvas = document.querySelector("#unity-canvas");
         var loadingBar = document.querySelector("#unity-loading-bar");
-        var progressBarFull = document.querySelector("#progressBar");
+        var progressBarFull = document.querySelector("#unity-progress-bar-full");
         var fullscreenButton = document.querySelector("#unity-fullscreen-button");
         var warningBanner = document.querySelector("#unity-warning");
         var loader = document.querySelector("#loader-image");
@@ -219,14 +173,14 @@
             window.Telegram.WebApp.openTelegramLink(link);
         }
         async function passCopyToBrowser(textToCopy) {
-            this.focus();
+            this.focus();     
             // Navigator clipboard api needs a secure context (https)
             if (navigator.clipboard && window.isSecureContext) {
                 try {
                     await navigator['clipboard'].writeText(textToCopy);
 
                 }
-                catch (error) {
+                catch (error){
                     console.log(error);
                 }
 
